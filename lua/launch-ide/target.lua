@@ -1,4 +1,5 @@
 ---@class LaunchIdeTarget
+---@field get_files function
 local Target = {}
 
 local function get_all_files()
@@ -21,17 +22,17 @@ local function get_all_files()
         ::continue::
     end
 
-    return table.concat(relative_paths, " ")
+    return relative_paths
 end
 
 ---@param open_all_files boolean
----@return string
-function Target:get_files(open_all_files)
+---@return table
+function Target.get_files(open_all_files)
     if open_all_files then
         return get_all_files()
     end
 
-    return vim.fn.expand('%:.')
+    return { vim.fn.expand('%:.') }
 end
 
 return Target
