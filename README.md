@@ -8,7 +8,7 @@ A simple Neovim plugin to quickly open your current project in IDE.
 *   Cursor (`cursor`)
 *   Zed (`zed`)
 
-## 💾 Installation
+## 📋 Installation
 
 Install with your favorite plugin manager.
 
@@ -21,7 +21,7 @@ Install with your favorite plugin manager.
 }
 ```
 
-##  Configuration
+## ⚙ Configuration
 
 The `setup` function applies your configuration. The default editor is `vscode`.
 
@@ -64,3 +64,8 @@ Alternatively, create a keymap:
 -- Open in IDE with <leader>o
 vim.keymap.set("n", "<leader>o", require("launch-ide").exec, { desc = "Open in external editor" })
 ```
+
+## ☑️TODO
+- [ ] Update Configuration more customizable
+- [ ] Create Commands
+
