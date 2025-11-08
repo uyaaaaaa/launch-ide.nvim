@@ -1,36 +1,23 @@
 ---@class LaunchIde
 local M = {}
 
----@class Config
----@field editor string
-local default_config = {
-    editor = "vscode",
-}
+local config = require("launch-ide.config")
+local editor = require("launch-ide.editor")
+local target = require("launch-ide.target")
 
----@type Config
-M.config = default_config
-
----@enum
-local COMMANDS = {
-    vscode = "code",
-    cursor = "cursor",
-    zed = "zed",
-}
-
----@param args Config?
-M.setup = function(args)
-    M.config = vim.tbl_deep_extend("force", M.config, args or {})
+function M.setup(opts)
+    config:setup(opts)
 end
 
-M.exec = function()
-    local cmd = COMMANDS[M.config.editor]
+function M.exec(opts)
+    local _config = config:apply(opts)
+    local cmd = editor:get_command(_config.name)
 
     if cmd == nil then
-        vim.notify("No configure for \"" .. M.config.editor .. "\".\nPlease check your configuration.")
         return
     end
 
-    local path = vim.fn.expand('%:.')
+    local path = target:get_files(_config.open_all_files)
 
     local output = vim.fn.system(cmd .. " . " .. path)
 
