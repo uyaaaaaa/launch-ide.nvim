@@ -70,4 +70,5 @@ vim.keymap.set("n", "<leader>o", require("launch-ide").exec, { desc = "Open in e
     - [ ] Launch options
     - [ ] Set default keymaps
 - [ ] Create Commands
+- [ ] Update document
 
