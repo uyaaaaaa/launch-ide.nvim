@@ -34,12 +34,12 @@ return {
 }
 ```
 
-## 🚀 Functions
+## 🚀 Usage
 
 The plugin exposes an `exec` function. You can create a user command or a keymap to invoke it.
 
 ```lua
-require("launch-ide").exec()
+vim.keymap.set("n", "<leader>o", require("launch-ide").exec(), { desc = "Open in external editor" })
 ```
 
 ### User Command
@@ -48,21 +48,6 @@ Add the following to your `init.lua` to create a `:LaunchIDE` command:
 
 ```lua
 vim.api.nvim_create_user_command("LaunchIDE", require("launch-ide").exec, {})
-```
-
-Then, run the command to open the current file's directory in your configured editor:
-
-```
-:LaunchIDE
-```
-
-### Keymap
-
-Alternatively, create a keymap:
-
-```lua
--- Open in IDE with <leader>o
-vim.keymap.set("n", "<leader>o", require("launch-ide").exec, { desc = "Open in external editor" })
 ```
 
 ## ☑️TODO
