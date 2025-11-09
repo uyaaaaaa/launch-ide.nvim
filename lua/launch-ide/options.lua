@@ -1,4 +1,5 @@
 ---@class LaunchIdeOptions
+---@field val table
 ---@field set function
 ---@field get function
 local Options = {}

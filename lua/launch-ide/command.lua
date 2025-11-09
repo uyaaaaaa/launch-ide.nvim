@@ -2,11 +2,11 @@
 ---@field execute function
 local Command = {}
 
----@param cmd string
+---@param editor LaunchIdeEditor
 ---@param path LaunchIdePath
 ---@param options LaunchIdeOptions
-function Command.execute(cmd, path, options)
-    local command_string = cmd .. " " .. options:get() .. " " .. path:get()
+function Command.execute(editor, path, options)
+    local command_string = editor:get_command() .. " " .. options:get() .. " " .. path:get()
 
     local output = vim.fn.system(command_string)
 

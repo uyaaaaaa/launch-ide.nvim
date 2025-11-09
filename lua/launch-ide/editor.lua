@@ -1,4 +1,6 @@
 ---@class LaunchIdeEditor
+---@field cmd string?
+---@field set function
 ---@field get_command function
 local Editor = {}
 
@@ -9,16 +11,20 @@ local SUPPORTED_EDITOR = {
     zed = "zed",
 }
 
+---@type string?
+Editor.cmd = nil
+
 ---@param name string
+---@return LaunchIdeEditor
+function Editor:set(name)
+    self.cmd = SUPPORTED_EDITOR[name]
+
+    return self
+end
+
 ---@return string?
-function Editor.get_command(name)
-    local cmd = SUPPORTED_EDITOR[name]
-
-    if cmd ~= nil then
-        return cmd
-    end
-
-    vim.notify("\"" .. name .. "\" is not supported. Please check your configuration.")
+function Editor:get_command()
+    return self.cmd
 end
 
 return Editor

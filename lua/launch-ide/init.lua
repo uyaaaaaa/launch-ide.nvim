@@ -15,16 +15,17 @@ end
 ---@param opts table
 function M.exec(opts)
     local _config = config:apply(opts)
-    local cmd = editor.get_command(_config.name)
+    local cmd_editor = editor:set(_config.name)
 
-    if cmd == nil then
+    if editor.cmd == nil then
+        vim.notify("\"" .. _config.name .. "\" is not supported. Please check your configuration.")
         return
     end
 
     local cmd_path = path:set(_config.open_all_files)
     local cmd_opts = options:set(_config.open_new_window)
 
-    command.execute(cmd, cmd_path, cmd_opts)
+    command.execute(cmd_editor, cmd_path, cmd_opts)
 end
 
 return M

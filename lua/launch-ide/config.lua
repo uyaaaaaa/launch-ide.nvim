@@ -1,4 +1,5 @@
 ---@class LaunchIdeConfig
+---@field val table
 ---@field setup function
 ---@field apply function
 local Config = {}

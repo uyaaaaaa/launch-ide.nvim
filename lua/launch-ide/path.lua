@@ -1,4 +1,5 @@
 ---@class LaunchIdePath
+---@field val table
 ---@field set function
 ---@field get function
 local Path = {}
