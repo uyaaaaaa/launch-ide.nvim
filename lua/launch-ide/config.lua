@@ -20,7 +20,7 @@ function Config:setup(opts)
     return self.val
 end
 
----@param opts table
+---@param opts table?
 ---@return table
 function Config:apply(opts)
     opts = opts or {}
