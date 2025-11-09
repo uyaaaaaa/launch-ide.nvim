@@ -2,27 +2,30 @@
 local M = {}
 
 local config = require("launch-ide.config")
-local editor = require("launch-ide.editor")
-local target = require("launch-ide.target")
-local command = require("launch-ide.command")
+local e = require("launch-ide.modules.editor")
+local p = require("launch-ide.modules.path")
+local o = require("launch-ide.modules..options")
+local cmd = require("launch-ide.modules.command")
 
 ---@param opts table
 function M.setup(opts)
-    config.setup(opts)
+    config:setup(opts)
 end
 
 ---@param opts table
 function M.exec(opts)
-    local _config = config.apply(opts)
-    local cmd = editor.get_command(_config.name)
+    local _config = config:apply(opts)
+    local editor = e:set(_config.name)
 
-    if cmd == nil then
+    if e.cmd == nil then
+        vim.notify("\"" .. _config.name .. "\" is not supported. Please check your configuration.")
         return
     end
 
-    local path = target.get_files(_config.open_all_files)
+    local path = p:set(_config.open_all_files)
+    local options = o:set(_config.open_new_window)
 
-    command.execute(cmd, path, {})
+    cmd.execute(editor, path, options)
 end
 
 return M

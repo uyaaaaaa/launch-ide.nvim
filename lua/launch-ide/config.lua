@@ -1,32 +1,31 @@
 ---@class LaunchIdeConfig
----@field opts LaunchIdeConfig
+---@field val table
 ---@field setup function
 ---@field apply function
 local Config = {}
 
 -- Default options
----@class LaunchIdeConfig
-Config.opts = {
+Config.val = {
     name = "vscode",
     open_all_files = false,
     open_new_window = false,
 }
 
 ---@param opts table
----@return LaunchIdeConfig
-function Config.setup(opts)
+---@return table
+function Config:setup(opts)
     opts = opts or {}
-    Config.opts = vim.tbl_deep_extend("force", Config.opts, opts)
+    self.val = vim.tbl_deep_extend("force", self.val, opts)
 
-    return Config.opts
+    return self.val
 end
 
 ---@param opts table
----@return LaunchIdeConfig
-function Config.apply(opts)
+---@return table
+function Config:apply(opts)
     opts = opts or {}
 
-    return vim.tbl_deep_extend("force", Config.opts, opts)
+    return vim.tbl_deep_extend("force", self.val, opts)
 end
 
 return Config

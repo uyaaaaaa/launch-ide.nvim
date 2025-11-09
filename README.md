@@ -52,7 +52,7 @@ vim.api.nvim_create_user_command("LaunchIDE", require("launch-ide").exec, {})
 
 ## ☑️TODO
 - [ ] Update Configuration more customizable
-    - [ ] Launch options
+    - [x] Launch options
     - [ ] Set default keymaps
 - [ ] Create Commands
 - [ ] Update document
