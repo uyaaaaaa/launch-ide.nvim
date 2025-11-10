@@ -12,7 +12,7 @@ function M.setup(opts)
     config:setup(opts)
 end
 
----@param opts table
+---@param opts table?
 function M.exec(opts)
     local _config = config:apply(opts)
     local editor = e:set(_config.name)
