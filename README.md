@@ -42,18 +42,10 @@ The plugin exposes an `exec` function. You can create a user command or a keymap
 vim.keymap.set("n", "<leader>o", require("launch-ide").exec(), { desc = "Open in external editor" })
 ```
 
-### User Command
-
-Add the following to your `init.lua` to create a `:LaunchIDE` command:
-
-```lua
-vim.api.nvim_create_user_command("LaunchIDE", require("launch-ide").exec, {})
-```
-
 ## ☑️TODO
 - [x] Update Configuration more customizable
     - [x] Launch options
     - [-] Set default keymaps
 - [x] Create Commands
-- [ ] Update document
+- [x] Update document
 
