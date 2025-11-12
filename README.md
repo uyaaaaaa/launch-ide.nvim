@@ -1,7 +1,6 @@
 # launch-ide.nvim
 
-You've walked the solitary path of Neovim, yet the peaceful days of IDEs call to you.
-This plugin is for the lost lamb who can't quite let go of the mundane world.
+For people who just can't quit the IDE life.
 
 ## 🚪 Supported Editors
 
@@ -26,7 +25,9 @@ This plugin is for the lost lamb who can't quite let go of the mundane world.
 return {
     "uyaaaaaa/launch-ide.nvim",
     opts = {
-        editor = "vscode",  -- "vscode" | "cursor" | "zed"
+        editor = "vscode",        -- "vscode" | "cursor" | "zed"
+        open_all_files = false,   -- Whether open all buffers that currently open in neovim.
+        open_new_window = false,  -- Whether open in new IDE window.
     }
 }
 ```
@@ -37,9 +38,3 @@ return {
 vim.keymap.set("n", "<leader>o", function return require("launch-ide").exec() end, { desc = "Open in external editor" })
 ```
 
-## ☑️ Future Mundane Expansion Plans (TODO)
-- [x] Improved settings customization
-    - [x] Launch options
-    - [-] Default keymap settings
-- [x] Command creation
-- [x] Documentation update
