@@ -14,8 +14,6 @@ end
 
 ---@param opts table?
 function M.exec(opts)
-    vim.notify("[Start] launching IDE...")
-
     local _config = config:apply(opts)
     local editor = e:set(_config.name)
 
@@ -24,12 +22,12 @@ function M.exec(opts)
         return
     end
 
+    vim.notify("[Start] launching " .. _config.name .. "...")
+
     local path = p:set(_config.open_all_files)
     local options = o:set(_config.open_new_window)
 
     cmd.execute(editor, path, options)
-
-    vim.notify("[Success] " .. editor:get_command())
 end
 
 return M
