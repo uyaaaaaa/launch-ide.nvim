@@ -12,6 +12,7 @@ function Command.execute(editor, path, options)
 
     if output then
         vim.notify(output, vim.log.levels.ERROR)
+        return
     end
 
     vim.notify("[Success] " .. command_string)
