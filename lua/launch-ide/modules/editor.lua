@@ -27,4 +27,12 @@ function Editor:get_command()
     return self.cmd
 end
 
+---@return string[]
+function Editor:get_supported_names()
+    local names = vim.tbl_keys(SUPPORTED_EDITOR)
+    table.sort(names)
+
+    return names
+end
+
 return Editor

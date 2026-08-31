@@ -34,6 +34,11 @@ return {
 
 ## 🚀 Usage
 
+```vim
+:LaunchIDE          " Open with the configured editor
+:LaunchIDE cursor   " Override the editor for this invocation ("vscode" | "cursor" | "zed")
+```
+
 ```lua
 vim.keymap.set("n", "<leader>o", function return require("launch-ide").exec() end, { desc = "Open in external editor" })
 ```
